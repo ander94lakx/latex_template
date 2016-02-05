@@ -1,0 +1,140 @@
+% IMPORTANTE
+% Para poner barrabaja en una url hay que cambiar '_' por '\textunderscore'
+
+%========================================================================================
+% PAQUETES
+%========================================================================================
+
+\usepackage[spanish]{babel} % For spanish texts
+\usepackage[utf8]{inputenc} % To use accent marks directly
+\usepackage{graphicx} % For graphics
+\usepackage{cite} % For references
+\usepackage{svg} % For vectorial graphics
+\usepackage{float} % To modify the pisotion of pictures
+\usepackage{listings} % For code
+\usepackage{times} % For dates
+\usepackage{color} % For colors (only few default colors)
+\usepackage[pdftex,
+			pdfauthor={Ander},
+			pdftitle={},
+			pdfsubject={},
+			pdfkeywords={},
+			pdfproducer={Latex},
+			pdfcreator={pdflatex}]{hyperref}  % For links and  PDF metadata
+\usepackage{url}
+\usepackage[Bjornstrup]{fncychap} % For better chapter titles
+\usepackage{fancyhdr} % For pages header and footer
+\usepackage{titling} % For use doc info in other parts of it 
+\usepackage{caption}
+\usepackage{minted}
+
+%========================================================================================
+% STYLE
+%========================================================================================
+
+%----------------------------------------------------------------------------------------
+% PATH FOR THE PICTURES
+%----------------------------------------------------------------------------------------
+
+\graphicspath{{./figuras/}}
+
+%----------------------------------------------------------------------------------------
+% FIX FOR THE LIST OF FIGURES
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+% TYPOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\familydefault}{\sfdefault} % Canges typography for ALL document
+\setlength{\parskip}{2mm} % Defines the lenght between paragraphs (by default == 0)
+
+%----------------------------------------------------------------------------------------
+% HEADERS AND FOOTERS
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CE,CO]{\leftmark}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot[RE,LO]{Ander}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+%----------------------------------------------------------------------------------------
+% LINKS (All black)
+%----------------------------------------------------------------------------------------
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+%----------------------------------------------------------------------------------------
+% CONTENTS NUMBERING DEPTH
+%----------------------------------------------------------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+%----------------------------------------------------------------------------------------
+% CODE
+%----------------------------------------------------------------------------------------
+
+% Color for commands (sh, bash, ...) (with lstlisting)
+\definecolor{gray95}{gray}{.95}
+\definecolor{gray85}{gray}{.80}
+\definecolor{gray45}{gray}{.45}
+\definecolor{myturquoise}{RGB}{0, 128, 128}
+\definecolor{mypink}{RGB}{177,48,112}
+\definecolor{myblue}{RGB}{56,133,231}
+
+\lstset{ 
+	frame=Ltb,
+	framerule=0pt,
+	aboveskip=0.5cm,
+	framextopmargin=3pt,
+	framexbottommargin=3pt,
+	framexleftmargin=0.2cm,
+	framesep=0pt,
+	rulesep=2.0pt,
+	backgroundcolor=\color{gray95},
+	rulesepcolor=\color{black},
+	%
+	stringstyle=\ttfamily,
+	showstringspaces = false,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{gray45},
+	keywordstyle=\bfseries,
+	%
+	numbers=left,
+	numbersep=15pt,
+	numberstyle=\tiny,
+	numberfirstline = false,
+	breaklines=true,
+}
+
+% Minimize listings fragmentation
+%\lstnewenvironment{listing}[1][]
+%{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+% Code style for terminal
+\lstdefinelanguage{none}{}
+\lstdefinestyle{terminal}{
+	language=none,
+	breaklines=true,
+	basicstyle=\footnotesize\bf\ttfamily,
+	backgroundcolor=\color{gray85},
+	rulesepcolor=\color{myturquoise},
+	numbers=none,
+}
+
+% For the rest of the code (with minted) (minted have better syntax highlighting than lstlisting for code)
+\usemintedstyle{borland}
